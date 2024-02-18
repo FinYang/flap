@@ -38,3 +38,12 @@ flap <- function(fc, fc_comp, Phi, res, res_comp,
   class(proj_fc) <- c("flap", class(proj_fc))
   proj_fc
 }
+
+#' @export
+as.data.frame.flap <- function(x, row.names = NULL, optional = FALSE, ...){
+  mat <- do.call(rbind, x)
+  df <- as.data.frame(mat)
+  df$p <- rep(as.integer(names(x)), each = nrow(x[[1]]))
+  df$h <- rep(seq_len(nrow(x[[1]])), times = length(x))
+  df
+}
