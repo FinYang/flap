@@ -1,6 +1,6 @@
 Package: flap
 Type: Package
-Title: flap: Forecast Linear Augmented Projection helps your forecast take off
+Title: Forecast Linear Augmented Projection
 Version: 0.0.0.9000
 Authors@R: 
       person(given = "Yangzhuoran Fin", 
