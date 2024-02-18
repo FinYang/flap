@@ -1,3 +1,4 @@
+#' @export
 flap <- function(fc_base, fc_comp, Phi, res_base, res_comp,
                  p = seq_len(ncol(res_comp))) {
   W <- get_W(res_base, res_comp, p)
