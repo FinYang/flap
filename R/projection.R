@@ -1,5 +1,4 @@
 project <- function(fc, W, Phi, p) {
-  fc <- unname(fc)
   C_all <- cbind(-Phi, diag(nrow(Phi)))
   m <- ncol(fc) - nrow(Phi)
   proj_fc <- lapply(
@@ -18,6 +17,7 @@ project <- function(fc, W, Phi, p) {
   proj_fc <- lapply(proj_fc, \(x) do.call(cbind, x))
   proj_fc <- list2array(proj_fc)
   proj_fc <- aperm(proj_fc, c(3, 1, 2))
+  colnames(proj_fc) <- colnames(fc)[seq_len(m)]
   proj_fc <- array2list(proj_fc)
   names(proj_fc) <- p
   proj_fc
