@@ -14,12 +14,13 @@ project <- function(fc, W, Phi, p) {
       W = W,
       SIMPLIFY = FALSE)
     })
-  proj_fc %>%
-    lapply(\(x) do.call(cbind, x)) %>%
-    list2array() %>%
-    aperm(c(3, 1, 2)) %>%
-    array2list() %>%
-    `names<-`(p)
+
+  proj_fc <- lapply(proj_fc, \(x) do.call(cbind, x))
+  proj_fc <- list2array(proj_fc)
+  proj_fc <- aperm(proj_fc, c(3, 1, 2))
+  proj_fc <- array2list(proj_fc)
+  names(proj_fc) <- p
+  proj_fc
 }
 
 block <- function(mat, m, n = m){
