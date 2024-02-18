@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # flap
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/FinYang/flap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FinYang/flap/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of `flap` is to provide the Forecast Linear Augmented Projection method that can reduce forecast variance by adjusting the forecasts of multivariate time series to be consistent with the forecasts of linear combinations (components) of the series by projecting all forecasts onto the space where the linear constraints are satisfied.
