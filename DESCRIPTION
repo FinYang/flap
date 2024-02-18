@@ -18,7 +18,6 @@ Description: The Forecast Linear Augmented Projection (flap) method reduces
     among linear projections. 
 License: GPL (>= 3)
 Encoding: UTF-8
-LazyData: true
 Imports: 
     corpcor
 RoxygenNote: 7.2.3
