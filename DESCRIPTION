@@ -1,0 +1,15 @@
+Package: flap
+Type: Package
+Title: flap: Forecast Linear Augmented Projection helps your forecast take off
+Version: 0.0.0.9000
+Authors@R: 
+      person(given = "Yangzhuoran Fin", 
+             family = "Yang", 
+             email = "yangyangzhuoran@gmail.com", 
+             role = c("aut", "cre"), 
+             comment = c(ORCID = "0000-0002-1232-8017")) 
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
