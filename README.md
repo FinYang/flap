@@ -44,7 +44,7 @@ mdl <- apply(fpp2::visnights, 2, forecast::ets)
 #> Registered S3 method overwritten by 'quantmod':
 #>   method            from
 #>   as.zoo.data.frame zoo
-fc <- vapply(mdl, \(mdl) forecast::forecast(mdl, h=12)$mean, 
+fc <- vapply(mdl, function(mdl) forecast::forecast(mdl, h=12)$mean, 
              FUN.VALUE = numeric(12))
 res <- vapply(mdl, residuals, 
               FUN.VALUE = numeric(nrow(fpp2::visnights)))
@@ -52,7 +52,7 @@ res <- vapply(mdl, residuals,
 # Obtain components and their forecasts and residuals
 pca <- stats::prcomp(fpp2::visnights, center = FALSE, scale. = FALSE)
 mdl_comp <- apply(pca$x, 2, forecast::ets)
-fc_comp <- vapply(mdl_comp, \(mdl) forecast::forecast(mdl, h=12)$mean, 
+fc_comp <- vapply(mdl_comp, function(mdl) forecast::forecast(mdl, h=12)$mean, 
                   FUN.VALUE = numeric(12))
 res_comp <- vapply(mdl_comp, residuals, 
                    FUN.VALUE = numeric(nrow(pca$x)))
