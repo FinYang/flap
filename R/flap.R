@@ -71,3 +71,37 @@ as.data.frame.flap <- function(x, row.names = NULL, optional = FALSE, ...){
   df$h <- rep(seq_len(nrow(x[[1]])), times = length(x))
   df
 }
+
+#' @export
+print.flap <- function(x, ...) {
+  cat("Forecast Linear Augmented Projection\n")
+  cat("A named list of numeric matrices of projected forecasts\n")
+  cat("------------")
+
+  cs <- "Num. of Series:"
+  ns <- nchar(cs)
+  cc <- "Num. of Components:"
+  nc <- nchar(cc)
+  ch <- "Num. of Forecast Horizons:"
+  nh <- nchar(ch)
+
+  cat("\n", paste0(cs, strrep(" ", nh-ns)), "m =", ncol(x[[1]]))
+  cat("\n", paste0(cc, strrep(" ", nh-nc)), "p = ")
+  print_consecutive(as.integer(names(x)))
+  cat("\n", paste0(ch), nrow(x[[1]]))
+  cat("\n------------\n")
+
+  utils::str(x, vec.len = 2, give.attr = FALSE, list.len = 5)
+  invisible(x)
+}
+
+print_consecutive <- function(nums) {
+  g <- cumsum(c(1L, diff(nums) != 1))
+  r <- rle(g)
+  end <- cumsum(r$lengths)
+  start <- c(1L, 1L + end[-length(end)])
+  out <- paste(nums[start], nums[end],sep = "-")
+  out[start == end] <- nums[start[start == end]]
+  cat(out, sep = ", ")
+  invisible(nums)
+}

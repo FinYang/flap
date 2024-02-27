@@ -19,7 +19,8 @@ Description: The Forecast Linear Augmented Projection (flap) method reduces
 License: GPL (>= 3)
 Encoding: UTF-8
 Imports: 
-    corpcor
+    corpcor, 
+    utils
 RoxygenNote: 7.2.3
 Suggests: 
     forecast,
