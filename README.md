@@ -20,7 +20,15 @@ satisfied.
 
 ## Installation
 
-You can install the development version of `flap` like so:
+You can install the **stable** version from
+[CRAN](https://cran.r-project.org/package=flap).
+
+``` r
+install.packages("flap")
+```
+
+You can install the **development** version from
+[Github](https://github.com/FinYang/flap)
 
 ``` r
 # install.packages("remotes")
