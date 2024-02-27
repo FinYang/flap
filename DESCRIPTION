@@ -18,6 +18,8 @@ Description: The Forecast Linear Augmented Projection (flap) method reduces
     among linear projections. 
 License: GPL (>= 3)
 Encoding: UTF-8
+URL: https://github.com/FinYang/flap
+BugReports: https://github.com/FinYang/flap/issues/
 Imports: 
     corpcor, 
     utils
