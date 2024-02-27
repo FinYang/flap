@@ -5,7 +5,10 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/flap)](https://CRAN.R-project.org/package=flap)
 [![R-CMD-check](https://github.com/FinYang/flap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FinYang/flap/actions/workflows/R-CMD-check.yaml)
+[![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 <!-- badges: end -->
 
 The goal of `flap` is to provide the Forecast Linear Augmented
@@ -26,7 +29,7 @@ remotes::install_github("FinYang/flap")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic workflow to flap:
 
 ``` r
 ## The following pacakges are required to run this example
@@ -60,6 +63,21 @@ Phi <- t(pca$rotation)
 
 # flap!
 proj_fc <- flap(fc, fc_comp, Phi, res, res_comp)
+proj_fc
+#> Forecast Linear Augmented Projection
+#> A named list of numeric matrices of projected forecasts
+#> ------------
+#>  Num. of Series:            m = 20
+#>  Num. of Components:        p = 1-20
+#>  Num. of Forecast Horizons: 12
+#> ------------
+#> List of 20
+#>  $ 1 : num [1:12, 1:20] 7.8 7.91 ...
+#>  $ 2 : num [1:12, 1:20] 7.64 7.76 ...
+#>  $ 3 : num [1:12, 1:20] 7.64 7.78 ...
+#>  $ 4 : num [1:12, 1:20] 7.39 7.48 ...
+#>  $ 5 : num [1:12, 1:20] 7.39 7.49 ...
+#>   [list output truncated]
 
 # Plot
 if(interactive()) {

@@ -16,7 +16,9 @@ knitr::opts_chunk$set(
 # flap
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/flap)](https://CRAN.R-project.org/package=flap)
 [![R-CMD-check](https://github.com/FinYang/flap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FinYang/flap/actions/workflows/R-CMD-check.yaml)
+[![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 <!-- badges: end -->
 
 The goal of `flap` is to provide the Forecast Linear Augmented Projection method that can reduce forecast variance by adjusting the forecasts of multivariate time series to be consistent with the forecasts of linear combinations (components) of the series by projecting all forecasts onto the space where the linear constraints are satisfied.
@@ -32,7 +34,7 @@ remotes::install_github("FinYang/flap")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic workflow to flap:
 
 ```{r example}
 ## The following pacakges are required to run this example
@@ -63,6 +65,7 @@ Phi <- t(pca$rotation)
 
 # flap!
 proj_fc <- flap(fc, fc_comp, Phi, res, res_comp)
+proj_fc
 
 # Plot
 if(interactive()) {
