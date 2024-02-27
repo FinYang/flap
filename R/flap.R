@@ -25,6 +25,30 @@
 #' @return A list of class \code{flap} with each element containing a \eqn{h} by
 #' \eqn{m} matrix of projected forecast of the original series for the corresponding
 #' number of components \code{p}.
+#'
+#' @examples
+#' # Generate example data
+#' # T = 70, m = 20
+#' train <- matrix(rnorm(70 * 20),ncol = 20)
+#'
+#' # Obtain the forecast and the residual of the original series
+#' mdl <- apply(train, 2, forecast::ets)
+#' fc <- vapply(mdl, function(mdl) forecast::forecast(mdl, h=12)$mean,
+#'              FUN.VALUE = numeric(12))
+#' res <- vapply(mdl, residuals, FUN.VALUE = numeric(70))
+#'
+#' # Obtain components and their forecasts and residuals
+#' pca <- stats::prcomp(train, center = FALSE, scale. = FALSE)
+#' mdl_comp <- apply(pca$x, 2, forecast::ets)
+#' fc_comp <- vapply(mdl_comp, function(mdl) forecast::forecast(mdl, h=12)$mean,
+#'                   FUN.VALUE = numeric(12))
+#' res_comp <- vapply(mdl_comp, residuals,
+#'                    FUN.VALUE = numeric(nrow(pca$x)))
+#' Phi <- t(pca$rotation)
+#'
+#' # flap!
+#' flap(fc, fc_comp, Phi, res, res_comp)
+#'
 #' @export
 flap <- function(fc, fc_comp, Phi, res, res_comp,
                  p = seq_len(ncol(fc_comp))) {

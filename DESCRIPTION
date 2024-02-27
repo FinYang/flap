@@ -21,3 +21,6 @@ Encoding: UTF-8
 Imports: 
     corpcor
 RoxygenNote: 7.2.3
+Suggests: 
+    forecast,
+    stats

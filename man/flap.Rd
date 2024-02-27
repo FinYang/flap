@@ -40,3 +40,27 @@ series to be consistent with the forecasts of linear combinations (components)
 of the series by projecting all forecasts onto the space where the linear
 constraints are satisfied.
 }
+\examples{
+# Generate example data
+# T = 70, m = 20
+train <- matrix(rnorm(70 * 20),ncol = 20)
+
+# Obtain the forecast and the residual of the original series
+mdl <- apply(train, 2, forecast::ets)
+fc <- vapply(mdl, function(mdl) forecast::forecast(mdl, h=12)$mean,
+             FUN.VALUE = numeric(12))
+res <- vapply(mdl, residuals, FUN.VALUE = numeric(70))
+
+# Obtain components and their forecasts and residuals
+pca <- stats::prcomp(train, center = FALSE, scale. = FALSE)
+mdl_comp <- apply(pca$x, 2, forecast::ets)
+fc_comp <- vapply(mdl_comp, function(mdl) forecast::forecast(mdl, h=12)$mean,
+                  FUN.VALUE = numeric(12))
+res_comp <- vapply(mdl_comp, residuals,
+                   FUN.VALUE = numeric(nrow(pca$x)))
+Phi <- t(pca$rotation)
+
+# flap!
+flap(fc, fc_comp, Phi, res, res_comp)
+
+}
