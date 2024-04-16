@@ -1,7 +1,7 @@
 Package: flap
 Type: Package
 Title: Forecast Linear Augmented Projection
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: 
       person(given = "Yangzhuoran Fin", 
              family = "Yang", 
