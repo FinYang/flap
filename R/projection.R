@@ -1,24 +1,15 @@
 project <- function(fc, W, Phi, p) {
   C_all <- cbind(-Phi, diag(nrow(Phi)))
   m <- ncol(fc) - nrow(Phi)
-  proj_fc <- lapply(
-    asplit(fc, 1), function(fc){
-      mapply(function(p, W){
-        C <- block(C_all, p, m+p)
-        WtC <- tcrossprod(W, C)
-        bf <- c(fc[seq_len(m+p)])
-        (bf -tcrossprod(WtC, t(solve(C %*% WtC, C))) %*% bf)[seq_len(m),]
-      },
-      p = p,
-      W = W,
-      SIMPLIFY = FALSE)
-    })
-
-  proj_fc <- lapply(proj_fc, function(x) do.call(cbind, x))
-  proj_fc <- list2array(proj_fc)
-  proj_fc <- aperm(proj_fc, c(3, 1, 2))
-  colnames(proj_fc) <- colnames(fc)[seq_len(m)]
-  proj_fc <- array2list(proj_fc)
+  proj_fc <- mapply(\(p, W){
+    C <- block(C_all, p, m+p)
+    WtC <- tcrossprod(W, C)
+    tbf <- fc[,seq_len(m+p)]
+    t((t(tbf)-tcrossprod(WtC, t(solve(C %*% WtC, tcrossprod(C, tbf)))))[seq_len(m),])
+  },
+  p = p,
+  W = W,
+  SIMPLIFY = FALSE)
   names(proj_fc) <- p
   proj_fc
 }
