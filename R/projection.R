@@ -4,8 +4,8 @@ project <- function(fc, W, Phi, p) {
   proj_fc <- mapply(\(p, W){
     C <- block(C_all, p, m+p)
     WtC <- tcrossprod(W, C)
-    tbf <- fc[,seq_len(m+p)]
-    t((t(tbf)-tcrossprod(WtC, t(solve(C %*% WtC, tcrossprod(C, tbf)))))[seq_len(m),])
+    tbf <- fc[,seq_len(m+p), drop = FALSE]
+    t((t(tbf)-tcrossprod(WtC, t(solve(C %*% WtC, tcrossprod(C, tbf)))))[seq_len(m), , drop = FALSE])
   },
   p = p,
   W = W,
