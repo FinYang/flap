@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 <!-- badges: end -->
 
-The goal of `flap` is to provide the Forecast Linear Augmented Projection method that can reduce forecast variance by adjusting the forecasts of multivariate time series to be consistent with the forecasts of linear combinations (components) of the series by projecting all forecasts onto the space where the linear constraints are satisfied.
+The goal of `flap` is to provide the Forecast Linear Augmented Projection method that can reduce forecast error variance by adjusting the forecasts of multivariate time series to be consistent with the forecasts of linear combinations (components) of the series by projecting all forecasts onto the space where the linear constraints are satisfied.
 
 ## Installation
 

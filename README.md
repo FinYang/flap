@@ -12,8 +12,8 @@ status](https://www.r-pkg.org/badges/version/flap)](https://CRAN.R-project.org/p
 <!-- badges: end -->
 
 The goal of `flap` is to provide the Forecast Linear Augmented
-Projection method that can reduce forecast variance by adjusting the
-forecasts of multivariate time series to be consistent with the
+Projection method that can reduce forecast error variance by adjusting
+the forecasts of multivariate time series to be consistent with the
 forecasts of linear combinations (components) of the series by
 projecting all forecasts onto the space where the linear constraints are
 satisfied.
@@ -55,6 +55,9 @@ mdl <- apply(fpp2::visnights, 2, forecast::ets)
 #> Registered S3 method overwritten by 'quantmod':
 #>   method            from
 #>   as.zoo.data.frame zoo
+```
+
+``` r
 fc <- vapply(mdl, function(mdl) forecast::forecast(mdl, h=12)$mean, 
              FUN.VALUE = numeric(12))
 res <- vapply(mdl, residuals, 
@@ -86,6 +89,9 @@ proj_fc
 #>  $ 4 : num [1:12, 1:20] 7.39 7.48 ...
 #>  $ 5 : num [1:12, 1:20] 7.39 7.49 ...
 #>   [list output truncated]
+```
+
+``` r
 
 # Plot
 if(interactive()) {
